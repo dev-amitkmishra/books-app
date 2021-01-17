@@ -7,9 +7,9 @@ const CardList = ({ books = [] }) => {
         <>
             <div className="row">
                 {
-                    books && books.map((book) => {
+                    books && books.map((book, index) => {
                         return (
-                            <div className="column">
+                            <div key={index} className="column">
                                 <Card bookInfo={ book.volumeInfo } />
                             </div>
                         )

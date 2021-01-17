@@ -9,13 +9,15 @@ export const addBook = (book) => {
 };
 
 export const showBooks = (searchtext) => async dispatch => {
-    const response = await axios.get(BooksApiUrl, {
-        params: {
-            q: searchtext
-        }
-    });
-    dispatch({
-        type: 'SHOW_BOOKS',
-        payload: response
-    })
+    if (searchtext) {
+        const response = await axios.get(BooksApiUrl, {
+            params: {
+                q: searchtext
+            }
+        });
+        dispatch({
+            type: 'SHOW_BOOKS',
+            payload: response
+        })
+    }
 }

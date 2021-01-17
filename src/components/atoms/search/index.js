@@ -7,7 +7,7 @@ const search = ({ searchText, searchHandler }) => {
         <>
             <div className="search">
                 <i className="fas fa-search search-icon"></i>
-                <input type="text" className="search-input" placeholder={ SearchInputPlaceholdertext } value={ searchText } onChange={(e) => searchHandler(e)} />
+                <input type="text" aria-label="Search" className="search-input" placeholder={ SearchInputPlaceholdertext } value={ searchText } onChange={(e) => searchHandler(e)} />
             </div>
         </>
     )

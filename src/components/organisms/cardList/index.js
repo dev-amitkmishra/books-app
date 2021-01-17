@@ -2,11 +2,21 @@ import React from 'react';
 import Card from '../../molecules/card';
 import './style.scss';
 
-const cardList = ({ text }) => {
+const cardList = ({ text, books }) => {
+    console.log('dsnbfghdsf', books);
     return (
         <>
             <div className="row">
-                <div className="column">
+                {
+                    books.map((book) => {
+                        return (
+                            <div className="column">
+                                <Card bookInfo={ book.volumeInfo } />
+                            </div>
+                        )
+                    })
+                }
+                {/* <div className="column">
                     <Card />
                 </div>
                 <div className="column">
@@ -17,7 +27,7 @@ const cardList = ({ text }) => {
                 </div>
                 <div className="column">
                     <Card />
-                </div>
+                </div> */}
             </div>
         </>
     )

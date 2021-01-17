@@ -5,19 +5,52 @@ import Search from "./components/atoms/search";
 import SubTitle from "./components/atoms/subtitle";
 import Title from "./components/atoms/title";
 import CardList from "./components/organisms/cardList";
-import { BlockSubTitle, BlockTitle, ButtonText } from './constants';
+import Form from "./components/organisms/form";
+import { BlockSubTitle, BlockTitle, BooksApiUrl, ButtonText } from './constants';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [searchText, setSearchText] = useState('');
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    const search = async () => {
+      const { data, status } = await axios(BooksApiUrl, {
+        params: {
+          q: searchText
+        }
+      });
+      if(status === 200 && data && data.items) {
+        setBooks(data.items);
+      }
+    }
+    search();
+
+  }, [searchText]);
+
   const btnClickHandler = () => {
     console.log('btn clicked');
+  };
+
+  const searchHandler = (e) => {
+    console.log('sdnfbhjsd', e.target.value);
+    setSearchText(e.target.value);
   }
   return (
     <div className="App">
       <Title title={ BlockTitle } appTitleColor="app-title" />
       <Button text={ ButtonText } clickHandler={ btnClickHandler } />
-      <Search />
-      <SubTitle subTitle={ BlockSubTitle } appSubTitleColor="app-subTitle" />
-      <CardList />
+      <Search searchHandler={ searchHandler } />
+      {
+        searchText && (
+          <>
+            <SubTitle subTitle={ BlockSubTitle } appSubTitleColor="app-subTitle" />
+            <CardList books={ books } />
+          </>
+        )
+      }
+      <Form />
+      <CardList books={ books } />
     </div>
   );
 }

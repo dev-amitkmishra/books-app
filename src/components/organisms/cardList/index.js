@@ -2,13 +2,12 @@ import React from 'react';
 import Card from '../../molecules/card';
 import './style.scss';
 
-const cardList = ({ text, books }) => {
-    console.log('dsnbfghdsf', books);
+const CardList = ({ books }) => {
     return (
         <>
             <div className="row">
                 {
-                    books.map((book) => {
+                    books && books.map((book) => {
                         return (
                             <div className="column">
                                 <Card bookInfo={ book.volumeInfo } />
@@ -16,21 +15,10 @@ const cardList = ({ text, books }) => {
                         )
                     })
                 }
-                {/* <div className="column">
-                    <Card />
-                </div>
-                <div className="column">
-                    <Card />
-                </div>
-                <div className="column">
-                    <Card />
-                </div>
-                <div className="column">
-                    <Card />
-                </div> */}
             </div>
         </>
     )
 };
 
-export default cardList;
+// export default connect(mapStateToProps, { addBook })(CardList);
+export default CardList;

@@ -4,6 +4,7 @@ import SubTitle from "../../atoms/subtitle";
 import './style.scss';
 
 const card = ({ bookInfo }) => {
+    debugger;
     const { title, authors, publisher, publishedDate } = bookInfo;
     return (
         <>

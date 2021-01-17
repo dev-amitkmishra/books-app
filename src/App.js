@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+import {Route, Switch} from 'react-router-dom';
 import logo from './logo.svg';
 // import './App.css';
 import Button from "./components/atoms/button";
@@ -9,24 +11,14 @@ import Form from "./components/organisms/form";
 import { BlockSubTitle, BlockTitle, BooksApiUrl, ButtonText } from './constants';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { addBook, showBooks } from './actions';
+import AddBook from './components/templates/addBooks';
+import Home from './components/templates/home';
 
-function App() {
+let volumeInfo = {};
+function App(props) {
   const [searchText, setSearchText] = useState('');
   const [books, setBooks] = useState([]);
-  useEffect(() => {
-    const search = async () => {
-      const { data, status } = await axios(BooksApiUrl, {
-        params: {
-          q: searchText
-        }
-      });
-      if(status === 200 && data && data.items) {
-        setBooks(data.items);
-      }
-    }
-    search();
-
-  }, [searchText]);
 
   const btnClickHandler = () => {
     console.log('btn clicked');
@@ -39,20 +31,32 @@ function App() {
   return (
     <div className="App">
       <Title title={ BlockTitle } appTitleColor="app-title" />
-      <Button text={ ButtonText } clickHandler={ btnClickHandler } />
+      <Button text={ ButtonText } type="button" clickHandler={ btnClickHandler } />
       <Search searchHandler={ searchHandler } />
-      {
+      {/* {
         searchText && (
           <>
             <SubTitle subTitle={ BlockSubTitle } appSubTitleColor="app-subTitle" />
-            <CardList books={ books } />
+            <CardList books={ props.books } />
           </>
         )
-      }
-      <Form />
-      <CardList books={ books } />
+      } */}
+      <Form submitBookHandler={ (bookInfo) => props.onAddBook(bookInfo) } />
+      <CardList books={ props.books } />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      books: state.books
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      onAddBook: (bookInfo) => dispatch(addBook(bookInfo))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

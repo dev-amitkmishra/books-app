@@ -1,13 +1,15 @@
-const addBook = (book) => {
+export const addBook = (book) => {
+    console.log('mjsndbfhgdsf', book);
     return {
         type: 'ADD_BOOK',
         payload: book
     }
 };
 
-const showBooks = () => {
+export const showBooks = () => {
+    console.log('rtyghj')
     return {
-        type: 'SHOW_LIST_OF_BOOKS',
+        type: 'SHOW_BOOKS',
         payload: []
     }
 }

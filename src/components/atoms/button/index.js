@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.scss';
 
-const button = ({ text, isTop, clickHandler }) => {
+const button = ({ text, type, isTop, clickHandler }) => {
     return (
         <>
             <input 
-                type="button"
+                type={ type }
                 className={`create-btn ${ !isTop ? 'top' : ''}`}
                 value= { text }
                 onClick={ clickHandler }

@@ -5,13 +5,15 @@ import SubTitle from "./components/atoms/subtitle";
 import Title from "./components/atoms/title";
 import CardList from "./components/organisms/cardList";
 import Form from "./components/organisms/form";
-import { BlockSubTitle, BlockTitle, ButtonText } from './constants';
+import { AddBook, BackToSearch, BlockSubTitle, BlockTitle, ButtonText, SearchInputPlaceholdertext } from './constants';
 import { useEffect, useState } from 'react';
 import { addBook, showBooks } from './actions';
 
 
 function App(props) {
   const [searchText, setSearchText] = useState('');
+  const [blockTitle, setBlockTitle] = useState(BlockTitle);
+  const [btnText, setBtnText] = useState(ButtonText);
   const [createBtnClicked, setCreateBtnClicked] = useState(false);
   const { onSearch } = props;
   useEffect(() => {
@@ -21,17 +23,26 @@ function App(props) {
   const btnClickHandler = () => {
     setCreateBtnClicked(!createBtnClicked);
     setSearchText('');
+    if (!createBtnClicked) {
+      setBtnText(BackToSearch);
+      setBlockTitle(AddBook);
+    } else {
+      setBtnText(ButtonText);
+      setBlockTitle(BlockTitle);
+    }
   };
 
-  const searchHandler = (e) => {
+  const changeHandler = (e) => {
     setSearchText(e.target.value);
     setCreateBtnClicked(false);
   }
   return (
     <div className="App">
-      <Title title={ BlockTitle } appTitleColor="app-title" />
-      <Button text={ ButtonText } type="button" clickHandler={ btnClickHandler } />
-      <Search searchHandler={ searchHandler } />
+      <Title title={ blockTitle } appTitleColor="app-title" />
+      <Button text={ btnText } type="button" clickHandler={ btnClickHandler } />
+      {
+        !createBtnClicked && <Search changeHandler={ changeHandler } placeholderText={ SearchInputPlaceholdertext } icon="fas fa-search" />
+      }
       {
         searchText && (
           <>

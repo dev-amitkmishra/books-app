@@ -1,8 +1,9 @@
 import React from 'react';
+import { NoBookFound } from '../../../constants';
 import Card from '../../molecules/card';
 import './style.scss';
 
-const CardList = ({ books = [] }) => {
+const CardList = ({ books = NoBookFound }) => {
     return (
         <>
             <div className="row">

@@ -4,7 +4,7 @@ import './style.scss';
 const subTitle = ({ subTitle, appSubTitleColor, cardSubTitleColor }) => {
     return (
         <>
-            <span className={`subTitle ${appSubTitleColor} ${cardSubTitleColor}`}>{ subTitle }</span>
+            <span className={`subTitle ${appSubTitleColor} ${cardSubTitleColor}`} title={ subTitle }>{ subTitle }</span>
         </>
     )
 };

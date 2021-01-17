@@ -17,3 +17,10 @@
   padding-left: 10px;
   font-size: 14px;
 }
+
+.ellipses {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 500px;
+}

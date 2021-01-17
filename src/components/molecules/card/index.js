@@ -8,14 +8,14 @@ const card = ({ bookInfo }) => {
     return (
         <>
             <div className="card">
-                <Title title={ title } cardTitleColour="card-title" />
-                <div className="card-div">
+                <Title title={ title } cardTitleColour="card-title ellipses" />
+                <div className="card-div ellipses">
                     <span>Author: </span><SubTitle subTitle={ authors && authors.length > 0 ? authors.join() : 'NA' }  cardSubTitleColor="card-subTitle" />
                 </div>
-                <div className="card-div">
+                <div className="card-div ellipses">
                     <span>Publisher: </span><SubTitle subTitle={ publisher || 'NA' }  cardSubTitleColor="card-subTitle" />
                 </div>
-                <div className="card-div">
+                <div className="card-div ellipses">
                     <span>Published Date: </span><SubTitle subTitle={ publishedDate }  cardSubTitleColor="card-subTitle" />
                 </div>
             </div>

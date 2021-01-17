@@ -1,13 +1,12 @@
 import React from 'react';
-import { SearchInputPlaceholdertext } from '../../../constants';
 import './style.scss';
 
-const search = ({ searchText, searchHandler }) => {
+const search = ({ searchText, placeholderText, changeHandler, icon, type = "text" }) => {
     return (
         <>
             <div className="search">
-                <i className="fas fa-search search-icon"></i>
-                <input type="text" aria-label="Search" className="search-input" placeholder={ SearchInputPlaceholdertext } value={ searchText } onChange={(e) => searchHandler(e)} />
+                <i className={`search-icon" ${icon}`}></i>
+                <input type={ type } aria-label="Search" className="search-input" placeholder={ placeholderText } onChange={(e) => changeHandler(e)} />
             </div>
         </>
     )

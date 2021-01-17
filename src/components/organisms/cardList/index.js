@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../../molecules/card';
 import './style.scss';
 
-const CardList = ({ books }) => {
+const CardList = ({ books = [] }) => {
     return (
         <>
             <div className="row">
@@ -20,5 +20,4 @@ const CardList = ({ books }) => {
     )
 };
 
-// export default connect(mapStateToProps, { addBook })(CardList);
 export default CardList;

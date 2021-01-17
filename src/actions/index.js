@@ -1,15 +1,21 @@
+import axios from "axios";
+import { BooksApiUrl } from "../constants";
+
 export const addBook = (book) => {
-    console.log('mjsndbfhgdsf', book);
     return {
         type: 'ADD_BOOK',
         payload: book
     }
 };
 
-export const showBooks = () => {
-    console.log('rtyghj')
-    return {
+export const showBooks = (searchtext) => async dispatch => {
+    const response = await axios.get(BooksApiUrl, {
+        params: {
+            q: searchtext
+        }
+    });
+    dispatch({
         type: 'SHOW_BOOKS',
-        payload: []
-    }
+        payload: response
+    })
 }

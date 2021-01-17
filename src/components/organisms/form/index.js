@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import Label from '../../atoms/label';
 import Input from '../../atoms/input';
 import Button from '../../atoms/button';
-import { addBook } from '../../../actions';
 import './style.scss';
 
 const Form = ({ submitBookHandler }) => {

@@ -1,23 +1,23 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import Button from "./components/atoms/button";
+import Search from "./components/atoms/search";
+import SubTitle from "./components/atoms/subtitle";
+import Title from "./components/atoms/title";
+import CardList from "./components/organisms/cardList";
+import { BlockSubTitle, BlockTitle, ButtonText } from './constants';
 
 function App() {
+  const btnClickHandler = () => {
+    console.log('btn clicked');
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title title={ BlockTitle } appTitleColor="app-title" />
+      <Button text={ ButtonText } clickHandler={ btnClickHandler } />
+      <Search />
+      <SubTitle subTitle={ BlockSubTitle } appSubTitleColor="app-subTitle" />
+      <CardList />
     </div>
   );
 }

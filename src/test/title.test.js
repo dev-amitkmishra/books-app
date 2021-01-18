@@ -15,4 +15,10 @@ describe('Title', () => {
         );
         expect(tree).toMatchSnapshot();
     });
+    it('should title match', () => {
+        const tree = shallow(
+            <Title title='testing title' />
+        );
+        expect(tree.prop('title')).toEqual('testing title')
+    })
 });

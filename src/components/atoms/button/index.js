@@ -3,14 +3,12 @@ import './style.scss';
 
 const button = ({ text, type, isTop, clickHandler }) => {
     return (
-        <>
-            <input 
-                type={ type }
-                className={`create-btn ${ !isTop ? 'top' : ''}`}
-                value= { text }
-                onClick={ clickHandler }
-            />
-        </>
+        <input 
+            type={ type }
+            className={`create-btn ${ !isTop ? 'top' : ''}`}
+            value= { text }
+            onClick={ clickHandler }
+        />
     )
 };
 

@@ -38,7 +38,7 @@ function App(props) {
   }
   return (
     <div className="App">
-      <Title title={ blockTitle } appTitleColor="app-title" />
+      <Title title={ blockTitle } appTitle="app-title" />
       <Button text={ btnText } type="button" clickHandler={ btnClickHandler } />
       {
         !createBtnClicked && <Search changeHandler={ changeHandler } placeholderText={ SearchInputPlaceholdertext } icon="fas fa-search" />
@@ -46,7 +46,7 @@ function App(props) {
       {
         searchText && (
           <>
-            <SubTitle subTitle={ BlockSubTitle } appSubTitleColor="app-subTitle" />
+            <SubTitle subTitle={ BlockSubTitle } appSubTitle="app-subTitle" />
             <CardList books={ props.books } />
           </>
         )

@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.scss';
 
-const subTitle = ({ subTitle, appSubTitleColor, cardSubTitleColor }) => {
+const subTitle = ({ subTitle, appSubTitle, cardSubTitleColor }) => {
     return (
         <>
-            <span className={`subTitle ${appSubTitleColor} ${cardSubTitleColor}`} title={ subTitle }>{ subTitle }</span>
+            <span className={`subTitle ${appSubTitle} ${cardSubTitleColor}`} title={ subTitle }>{ subTitle }</span>
         </>
     )
 };

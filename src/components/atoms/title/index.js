@@ -1,11 +1,9 @@
 import React from 'react';
 import './style.scss';
 
-const title = ({ title, appTitle, cardTitleColour }) => {
+const title = ({ title, appTitle, cardTitle }) => {
     return (
-        <>
-            <div className={`title ${appTitle? appTitle : ''} ${cardTitleColour ? cardTitleColour : ''}`} title={ title }>{ title }</div>
-        </>
+        <div className={`title ${appTitle? appTitle : ''} ${cardTitle ? cardTitle : ''}`} title={ title }>{ title }</div>
     )
 };
 
